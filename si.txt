@@ -1,10 +1,1 @@
-<<<<<<< HEAD
-nota 2.9
-=======
-nota 7
-<<<<<<< HEAD
-promedio 7
-=======
-NOTA 1
->>>>>>> 7406ea238718c8e3c36e7c639ee0a181056950f9
->>>>>>> 73f9b9588ac4fa849ed4b618074eefbedb44cfbe
+<wenagente
