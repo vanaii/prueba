@@ -1,2 +1,6 @@
 nota 7
+<<<<<<< HEAD
 promedio 7
+=======
+NOTA 1
+>>>>>>> 7406ea238718c8e3c36e7c639ee0a181056950f9
