@@ -1,210 +1,116 @@
-INSERT INTO tienda (nombre_tienda, ubicacion_tienda, nombre_jefe) VALUES
-('Wakanda Games', 'Santiago Centro', 'Chadwick Boseman'),
-('Casa Gryffindor', 'Providencia', 'Emma Watson'),
-('BatCave Store', 'Las Condes', 'Christian Bale'),
-('Pokémon Plaza', 'Ñuñoa', 'Ash Ketchum'),
-('Tatooine Traders', 'La Florida', 'Mark Hamill'),
-('Stark Industries Toys', 'Viña del Mar', 'Robert Downey Jr.'),
-('Mushroom Kingdom', 'Puente Alto', 'Charles Martinet'),
-('Ghibli World', 'Maipú', 'Hayao Miyazaki'),
-('Middle Earth Market', 'Concepción', 'Ian McKellen'),
-('Zelda Zone', 'Valparaíso', 'Shigeru Miyamoto')
-;
+-- 📦 PRODUCTOS (MEZCLADOS entre cartas y juegos)
+INSERT INTO producto (id_producto, url_producto, stock, categoria, nombre_producto, venta_producto, id_carta, id_juego) VALUES
+(101, 'https://img.cards/pikachu-vmax', 5, 'Carta', 'Pikachu VMAX', 12, 201, NULL),
+(102, 'https://img.board/risk', 7, 'Juego de Mesa', 'Risk', 22, NULL, 301),
+(103, 'https://img.cards/mewtwo-shadow', 6, 'Carta', 'Mewtwo Sombra', 19, 202, NULL),
+(104, 'https://img.board/magic-maze', 6, 'Juego de Mesa', 'Magic Maze', 18, NULL, 302),
+(105, 'https://img.cards/black-lotus', 2, 'Carta', 'Black Lotus', 40, 203, NULL),
+(106, 'https://img.board/zombicide', 5, 'Juego de Mesa', 'Zombicide', 21, NULL, 303),
+(107, 'https://img.cards/sailor-moon', 8, 'Carta', 'Sailor Moon Rare', 8, 204, NULL),
+(108, 'https://img.board/monopoly-mario', 8, 'Juego de Mesa', 'Monopoly Mario Kart', 28, NULL, 304),
+(109, 'https://img.cards/darth-vader', 5, 'Carta', 'Darth Vader Especial', 12, 205, NULL),
+(110, 'https://img.board/trivial-pursuit', 9, 'Juego de Mesa', 'Trivial Pursuit Geek', 26, NULL, 305);
 
-INSERT INTO lista_deseos (fecha_carrito, nombre_lista) VALUES
-('2025-06-01', 'Para el torneo de Kanto'),
-('2025-06-02', 'Cartas de Hogwarts'),
-('2025-06-03', 'Mis favoritas de Marvel'),
-('2025-06-04', 'Duelos de las galaxias'),
-('2025-06-05', 'Anillos del poder'),
-('2025-06-06', 'Regalos para el Consejo Jedi'),
-('2025-06-07', 'Accesorios de los Vengadores'),
-('2025-06-08', 'Colección de Miyazaki'),
-('2025-06-09', 'Tablero de Westeros'),
-('2025-06-10', 'Productos del Reino Champiñón')
-;
+-- 🃏 CARTAS
+INSERT INTO carta (id_carta, id_producto, rareza, año, estado, formato, id_carro) VALUES
+(201, 101, 'Ultra Rara', 1999, 'Nuevo', 'Holográfico', 401),
+(202, 103, 'Legendaria', 1996, 'Excelente', 'Foil', 402),
+(203, 105, 'Exclusiva', 2010, 'Perfecto', 'Full Art', 403),
+(204, 107, 'Promocional', 2018, 'Excelente', 'Stamped', 404),
+(205, 109, 'Oscura', 2012, 'Bueno', '3D', 405);
 
+-- 🎲 JUEGOS DE MESA
+INSERT INTO juego_de_mesa (id_juego, id_producto, tipo_juego) VALUES
+(301, 102, 'Tablero'),
+(302, 104, 'Guerra'),
+(303, 106, 'Rol'),
+(304, 108, 'Cooperativo'),
+(305, 110, 'Familia');
+
+-- TIENDA
+INSERT INTO tienda (id_tienda, nombre_tienda, ubicacion_tienda, nombre_jefe) VALUES
+(1001, 'Juegos Galácticos', 'Nueva York', 'Elon Musk'),
+(1002, 'Cartas Legendarias', 'Tokio', 'Hayao Miyazaki'),
+(1003, 'La Mesa Mística', 'Berlín', 'Emma Watson'),
+(1004, 'Freaky Store', 'Santiago', 'Bad Bunny'),
+(1005, 'Geek Central', 'Los Ángeles', 'Robert Downey Jr.');
+
+-- LISTA DE DESEOS
+INSERT INTO lista_deseos (id_lista, fecha_carrito, nombre_lista) VALUES
+(2001, '2025-01-01', 'Mi Colección Soñada'),
+(2002, '2025-02-14', 'Amor a las Cartas'),
+(2003, '2025-03-20', 'Top Juegos 2025'),
+(2004, '2025-04-10', 'Viaje Geek'),
+(2005, '2025-05-05', 'Lo Quiero Ya');
+
+-- USUARIOS
 INSERT INTO usuario (correo, rol, nombre_usuario, contraseña, direccion_cliente, id_tienda, id_lista) VALUES
-('tony@stark.com', 'administrador', 'IronAdmin', 'jarvis123', 'Av. Stark 10880', 6, 3),
-('bruce@wayne.com', 'jefe', 'BatJefe', 'batpass', 'Batcueva 1', 3, 2),
-('harry@hogwarts.com', 'cliente', 'PotterFan', 'expelliarmus', 'Privet Drive 4', 2, 2),
-('frodo@baggins.com', 'cliente', 'RingBearer', 'mordor1', 'La Comarca 7', 5, 5),
-('luke@rebels.com', 'cliente', 'SkyWalker', 'force99', 'Tatooine Norte', 4, 4),
-('ash@poke.com', 'jefe', 'AshJefe', 'pikachu!', 'Pallet Town 1', 4, 1),
-('mario@nintendo.com', 'cliente', 'ItsaMe', 'mushroom', 'Castillo Peach', 7, 10),
-('totoro@ghibli.com', 'cliente', 'ForestSpirit', 'nekobus', 'Bosque Encantado', 8, 8),
-('arya@stark.com', 'cliente', 'NoOne', 'valarmorghulis', 'Winterfell 9', 9, 9),
-('zelda@hyrule.com', 'cliente', 'PrincessZ', 'triforce', 'Castillo Hyrule', 10, 10)
-;
+('admin@invenpo.com', 'Administrador', 'Tony Stark', 'ironman123', 'Malibu, CA', 1001, 2001),
+('jefe1@invenpo.com', 'Jefe', 'Bruce Wayne', 'batcave456', 'Gotham City', 1002, 2002),
+('cliente1@invenpo.com', 'Cliente', 'Peter Parker', 'spidey789', 'Queens, NY', 1003, 2003),
+('cliente2@invenpo.com', 'Cliente', 'Leia Organa', 'alderaan007', 'Corellia', 1004, 2004),
+('jefe2@invenpo.com', 'Jefe', 'Gandalf', 'mellon999', 'Minas Tirith', 1005, 2005);
 
+-- PERMISOS
 INSERT INTO permiso (id_permiso, correo, permiso_app, permiso_tienda) VALUES
-(1, 'tony@stark.com', 'total', 'total'),
-(2, 'bruce@wayne.com', 'gestión de productos', 'jefe'),
-(3, 'ash@poke.com', 'gestión de productos', 'jefe'),
-(4, 'harry@hogwarts.com', 'limitado', 'cliente'),
-(5, 'frodo@baggins.com', 'limitado', 'cliente'),
-(6, 'luke@rebels.com', 'limitado', 'cliente'),
-(7, 'mario@nintendo.com', 'limitado', 'cliente'),
-(8, 'totoro@ghibli.com', 'limitado', 'cliente'),
-(9, 'arya@stark.com', 'limitado', 'cliente'),
-(10, 'zelda@hyrule.com', 'limitado', 'cliente')
-;
+(1, 'admin@invenpo.com', 'CRUD_TOTAL', 'ADMIN_TODO'),
+(2, 'jefe1@invenpo.com', 'CRUD_PRODUCTO', 'GESTION_LOCAL'),
+(3, 'jefe2@invenpo.com', 'CRUD_PRODUCTO', 'GESTION_LOCAL'),
+(4, 'cliente1@invenpo.com', 'LECTURA', 'LECTURA'),
+(5, 'cliente2@invenpo.com', 'LECTURA', 'LECTURA');
 
-INSERT INTO carro_de_compras (monto_total, cantidad, correo) VALUES
-(15000, 1, 'harry@hogwarts.com'),
-(30000, 2, 'frodo@baggins.com'),
-(50000, 3, 'luke@rebels.com'),
-(45000, 3, 'mario@nintendo.com'),
-(20000, 2, 'totoro@ghibli.com'),
-(60000, 4, 'arya@stark.com'),
-(75000, 5, 'zelda@hyrule.com'),
-(100000, 5, 'tony@stark.com'),
-(80000, 4, 'ash@poke.com'),
-(65000, 3, 'bruce@wayne.com')
-;
+-- CARRO DE COMPRAS
+INSERT INTO carro_de_compras (id_carro, monto_total, cantidad, correo) VALUES
+(401, 24, 2, 'cliente1@invenpo.com'),
+(402, 35, 3, 'cliente2@invenpo.com'),
+(403, 15, 1, 'cliente1@invenpo.com'),
+(404, 60, 5, 'cliente2@invenpo.com'),
+(405, 10, 1, 'cliente1@invenpo.com');
 
-INSERT INTO boleta (metodo_pago, fecha_c, id_carro) VALUES
-('Tarjeta StarkPay', '2025-06-01', 1),      -- Harry
-('Transferencia WayneBank', '2025-06-02', 2),  -- Frodo
-('Créditos Jedi', '2025-06-03', 3),         -- Luke
-('PokePesos', '2025-06-04', 4),             -- Mario
-('Espíritu del Bosque', '2025-06-05', 5),   -- Totoro
-('Dragones de Oro', '2025-06-06', 6),       -- Arya
-('Rupias de Hyrule', '2025-06-07', 7),      -- Zelda
-('Crédito Ilimitado StarkCard', '2025-06-08', 8), -- Tony
-('Pago con Pokébola', '2025-06-09', 9),     -- Ash
-('BatiCrédito', '2025-06-10', 10)          -- Bruce
-;
+-- BOLETAS
+INSERT INTO boleta (n_boleta, metodo_pago, fecha_c, id_carro) VALUES
+(501, 'Tarjeta', '2025-01-03', 401),
+(502, 'Transferencia', '2025-01-04', 402),
+(503, 'Efectivo', '2025-01-06', 403),
+(504, 'Tarjeta', '2025-01-09', 404),
+(505, 'Criptomoneda', '2025-01-11', 405);
 
-INSERT INTO carta (id_producto, rareza, año, estado, formato, id_carro) VALUES
-(1, 'Rara', 2001, 'Usada', 'Legacy', 1),
-(2, 'Ultra Rara', 2003, 'Nueva', 'Commander', 2),
-(3, 'Legendaria', 2022, 'Nueva', 'Standard', 3),
-(4, 'Rara', 2020, 'Usada', 'Expanded', 4),
-(5, 'Común', 1997, 'Dañada', 'Vintage', 5)
-;
+-- VALORACIÓN
+INSERT INTO valoracion (id_usuario, fecha_v, comentario, puntuacion, correo, id_producto) VALUES
+('cliente1@invenpo.com', '2025-01-05', 'Impresionante carta vintage.', 5, 'cliente1@invenpo.com', 101),
+('cliente2@invenpo.com', '2025-01-07', 'Muy divertido para jugar en familia.', 4, 'cliente2@invenpo.com', 102);
 
-INSERT INTO juego_de_mesa (id_producto, tipo_juego) VALUES
-(6, 'Estrategia'),
-(7, 'Guerra'),
-(8, 'Fantasía'),
-(9, 'Intriga'),
-(10, 'Aventura')
-;
+-- RANKING PRODUCTO
+INSERT INTO ranking (id_rank, posicion_rank, posicion_mundial, id_producto) VALUES
+(601, 1, 15, 105),
+(602, 2, 30, 102);
 
-INSERT INTO producto (url, stock, categoria, nombre_producto, venta_producto) VALUES
-('url_hogwarts.jpg', 10, 'Cartas', 'Varita de Hermione', 25000),
-('url_ring.jpg', 5, 'Cartas', 'Anillo Único Foil', 40000),
-('url_sable.jpg', 3, 'Cartas', 'Sable Luz Azul', 35000),
-('url_poke.jpg', 8, 'Cartas', 'Carta Pikachu VMAX', 30000),
-('url_marauder.jpg', 6, 'Cartas', 'Mapa del Merodeador', 27000),
-('url_catan.jpg', 4, 'Juego de mesa', 'Catan Deluxe', 55000),
-('url_risk.jpg', 2, 'Juego de mesa', 'Risk Star Wars Edition', 50000),
-('url_miyazaki.jpg', 3, 'Juego de mesa', 'Spirited Away Board Game', 47000),
-('url_trono.jpg', 5, 'Juego de mesa', 'Juego de Tronos', 60000),
-('url_zelda.jpg', 7, 'Juego de mesa', 'Aventura en Hyrule', 65000)
-;
-
-INSERT INTO ranking (posicion_rank, posicion_mundial, id_producto) VALUES
-(1, 10, 10), -- Zelda
-(2, 15, 9), -- Juego de Tronos
-(3, 18, 6), -- Catan
-(4, 22, 7), -- Risk Star Wars
-(5, 25, 4), -- Pikachu
-(6, 30, 1), -- Varita
-(7, 35, 2), -- Anillo Único
-(8, 40, 3), -- Sable Luz
-(9, 45, 5), -- Mapa Merodeador
-(10, 50, 8) -- Spirited Away
-;
-
-INSERT INTO valoracion (id_usuario, id_producto, fecha_v, comentario, puntuacion) VALUES
-('harry@hogwarts.com', 1, '2025-06-01', 'Una varita digna de Hermione. 10/10', 5),
-('frodo@baggins.com', 2, '2025-06-02', 'El anillo... me llama. Pero es carísimo.', 4),
-('luke@rebels.com', 3, '2025-06-03', 'Más azul que mi esperanza.', 5),
-('mario@nintendo.com', 4, '2025-06-04', '¡Pika Pika! Muy electrizante.', 5),
-('totoro@ghibli.com', 5, '2025-06-05', 'Lo usé una vez, ahora estoy perdido.', 3),
-('arya@stark.com', 6, '2025-06-06', 'Catan es juego de asesinos ahora.', 4),
-('zelda@hyrule.com', 7, '2025-06-07', 'Risk con jedis: sueño cumplido.', 5),
-('tony@stark.com', 8, '2025-06-08', 'Miyazaki es mi espíritu animal.', 5),
-('ash@poke.com', 9, '2025-06-09', 'Juego de Tronos me hizo llorar.', 4),
-('bruce@wayne.com', 10, '2025-06-10', 'Zelda me hizo olvidarme de Gotham.', 5)
-;
-
-INSERT INTO ranking_carta (id_rank_c, id_lista, id_carta, posicion_rank) VALUES
-(1, 1, 1, 1),
-(2, 2, 2, 2),
-(3, 3, 3, 3),
-(4, 4, 4, 4),
-(5, 5, 5, 5),
-(6, 6, 2, 6),
-(7, 7, 1, 7),
-(8, 8, 4, 8),
-(9, 9, 5, 9),
-(10, 10, 3, 10)
-;
-
+-- USUARIO X PRODUCTO
 INSERT INTO usuario_x_producto (correo, id_producto) VALUES
-('harry@hogwarts.com', 1),
-('frodo@baggins.com', 2),
-('luke@rebels.com', 3),
-('mario@nintendo.com', 4),
-('totoro@ghibli.com', 5),
-('arya@stark.com', 6),
-('zelda@hyrule.com', 7),
-('tony@stark.com', 8),
-('ash@poke.com', 9),
-('bruce@wayne.com', 10)
-;
+('cliente1@invenpo.com', 101),
+('cliente2@invenpo.com', 102);
 
+-- LISTA DESEOS X PRODUCTO
 INSERT INTO lista_deseos_x_producto (id_lista, id_producto) VALUES
-(1, 4),  -- Pikachu
-(2, 1),  -- Varita
-(3, 8),  -- Spirited Away
-(4, 3),  -- Sable
-(5, 2),  -- Anillo
-(6, 7),  -- Risk Star Wars
-(7, 6),  -- Catan
-(8, 9),  -- Tronos
-(9, 10), -- Zelda
-(10, 5) -- Mapa Merodeador
-;
+(2001, 101),
+(2002, 102);
 
+-- PRODUCTO X CARRO DE COMPRAS
 INSERT INTO producto_x_carro_de_compras (id_producto, id_carro) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10)
-;
+(101, 401),
+(102, 402);
 
+-- LISTA DESEOS X CARRO DE COMPRAS
 INSERT INTO lista_deseos_x_carro_de_compras (id_lista, id_carro) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10)
-;
+(2001, 401),
+(2002, 402);
 
+-- LISTA DESEOS X RANKING CARTA
 INSERT INTO lista_deseos_x_ranking_carta (id_lista, id_carta) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 2),
-(7, 1),
-(8, 4),
-(9, 5),
-(10, 3)
-;
+(2001, 201),
+(2002, 202);
+
+-- RANKING CARTA
+INSERT INTO ranking_carta (id_rank_c, id_lista, id_carta, posicion_rank) VALUES
+(701, 2001, 201, 1),
+(702, 2002, 202, 2);
