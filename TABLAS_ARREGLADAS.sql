@@ -49,6 +49,10 @@ CREATE TABLE IF NOT EXISTS carro_de_compras (
 CREATE TABLE IF NOT EXISTS boleta (
     n_boleta SERIAL PRIMARY KEY,
     metodo_pago VARCHAR(50),
+    estado_pago VARCHAR(50),
+    monto_pago INT,
+    impuestos INT,
+    num_transaccion VARCHAR(50),
     fecha_c DATE,
     id_carro INT UNIQUE,
     FOREIGN KEY (id_carro) REFERENCES carro_de_compras(id_carro)
