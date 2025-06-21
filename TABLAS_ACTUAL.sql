@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS boleta (
     metodo_pago VARCHAR(50),
     estado_pago VARCHAR(50),
     monto_pago INT,
-    impuestos INT,
+    impuestos VARCHAR(50),
     num_transaccion VARCHAR(50),
     fecha_c DATE,
     id_carro INT UNIQUE,
@@ -65,7 +65,8 @@ CREATE TABLE IF NOT EXISTS producto (
     stock INT,
     categoria VARCHAR(50),
     nombre_producto VARCHAR(50),
-    venta_producto INT
+    venta_producto INT,
+  	precio_producto int
 );
 
 -- Tabla Carta
