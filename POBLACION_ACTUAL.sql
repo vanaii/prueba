@@ -1,25 +1,4 @@
--- 1. LIMPIAR TABLAS
-TRUNCATE TABLE 
-    ranking_carta,
-    lista_deseos_x_ranking_carta,
-    lista_deseos_x_carro_de_compras,
-    producto_x_carro_de_compras,
-    lista_deseos_x_producto,
-    usuario_x_producto,
-    valoracion,
-    ranking,
-    juego_de_mesa,
-    carta,
-    boleta,
-    carro_de_compras,
-    permiso,
-    usuario,
-    tienda,
-    lista_deseos,
-    producto 
-RESTART IDENTITY CASCADE;
-
--- 2.PRODUCTOS
+-- 1.PRODUCTOS
 INSERT INTO producto (url, stock, categoria, nombre_producto, venta_producto, precio_producto) VALUES
 ('https://img.cards/pikachu-vmax', 5, 'Carta', 'Pikachu VMAX',17 , 12000),
 ('https://img.board/risk', 7, 'Juego de Mesa', 'Risk', 26, 22000),
@@ -52,7 +31,7 @@ INSERT INTO producto (url, stock, categoria, nombre_producto, venta_producto, pr
 ('https://img.cards/gengar-vmax', 8, 'Carta', 'Gengar VMAX',23, 22000),
 ('https://img.board/gloomhaven', 3, 'Juego de Mesa', 'Gloomhaven',17, 120000);
 
--- 3.LISTAS DE DESEOS
+-- 2.LISTAS DE DESEOS
 INSERT INTO lista_deseos (fecha_carrito, nombre_lista) VALUES
 ('2025-01-01', 'Mi Colección Soñada'),
 ('2025-02-14', 'Amor a las Cartas'),
@@ -65,7 +44,7 @@ INSERT INTO lista_deseos (fecha_carrito, nombre_lista) VALUES
 ('2025-06-15', 'Juegos Estratégicos'),
 ('2025-06-20', 'Regalos Cumpleaños');
 
--- 4.TIENDAS
+-- 3.TIENDAS
 INSERT INTO tienda (nombre_tienda, ubicacion_tienda, nombre_jefe) VALUES
 ('Juegos Galácticos', 'Nueva York', 'Elon Musk'),
 ('Cartas Legendarias', 'Tokio', 'Hayao Miyazaki'),
@@ -78,7 +57,7 @@ INSERT INTO tienda (nombre_tienda, ubicacion_tienda, nombre_jefe) VALUES
 ('Asgard Outpost', 'New Asgard', 'Thor Odinson'),
 ('Spy Games', 'Budapest', 'Natasha Romanoff');
 
--- 5.USUARIOS
+-- 4.USUARIOS
 INSERT INTO usuario (correo, rol, nombre_usuario, contraseña, direccion_cliente, id_tienda, id_lista) VALUES
 ('admin@invenpo.com', 'Administrador', 'Tony Stark', 'ironman123', 'Malibu, CA', 1, 1),
 ('jefe1@invenpo.com', 'Jefe', 'Bruce Wayne', 'batcave456', 'Gotham City', 2, 2),
@@ -91,7 +70,7 @@ INSERT INTO usuario (correo, rol, nombre_usuario, contraseña, direccion_cliente
 ('cliente5@invenpo.com', 'Cliente', 'Natasha Romanoff', 'blackwidow', 'St. Petersburg', NULL, 9),
 ('jefe4@invenpo.com', 'Jefe', 'Thor Odinson', 'mjolnir', 'Asgard', 9, 10);
 
--- 6.PERMISOS
+-- 5.PERMISOS
 INSERT INTO permiso (correo, permiso_app, permiso_tienda) VALUES
 ('admin@invenpo.com', 'CRUD_TOTAL', 'ADMIN_TODO'),
 ('jefe1@invenpo.com', 'CRUD_PRODUCTO', 'GESTION_LOCAL'),
@@ -104,7 +83,7 @@ INSERT INTO permiso (correo, permiso_app, permiso_tienda) VALUES
 ('cliente4@invenpo.com', 'LECTURA', 'LECTURA'),
 ('cliente5@invenpo.com', 'LECTURA', 'LECTURA');
 
--- 7.CARROS DE COMPRAS
+-- 6.CARROS DE COMPRAS
 INSERT INTO carro_de_compras (monto_total, cantidad, correo) VALUES
 (24, 2, 'cliente1@invenpo.com'),
 (35, 3, 'cliente2@invenpo.com'),
@@ -122,7 +101,7 @@ INSERT INTO carro_de_compras (monto_total, cantidad, correo) VALUES
 (200, 5, 'cliente5@invenpo.com'),
 (25, 1, 'cliente3@invenpo.com');
 
--- 8.CARTAS
+-- 7.CARTAS
 INSERT INTO carta (id_producto, rareza, año, estado, formato, id_carro) VALUES
 (1, 'Ultra Rara', 1999, 'Nuevo', 'Holográfico', 1),
 (3, 'Legendaria', 1996, 'Excelente', 'Foil', 2),
@@ -140,7 +119,7 @@ INSERT INTO carta (id_producto, rareza, año, estado, formato, id_carro) VALUES
 (27, 'Star Rare', 2003, 'Excelente', 'Holográfico', NULL),
 (29, 'Alt Art', 2023, 'Nuevo', 'Full Art', NULL);
 
--- 9.JUEGOS DE MESA
+-- 8.JUEGOS DE MESA
 INSERT INTO juego_de_mesa (id_producto, tipo_juego) VALUES
 (2, 'Tablero'),
 (4, 'Guerra'),
@@ -158,7 +137,7 @@ INSERT INTO juego_de_mesa (id_producto, tipo_juego) VALUES
 (28, 'Ciencia Ficción'),
 (30, 'Rol');
 
--- 10.BOLETAS
+-- 9.BOLETAS
 INSERT INTO boleta (metodo_pago, estado_pago, monto_pago, impuestos, num_transaccion, fecha_c, id_carro) VALUES
 ('Tarjeta', 'Aprobado', 24, 'IVA', '11111', '2025-01-03', 1),
 ('Transferencia', 'Rechazado', 35, 'IVA', '22222', '2025-01-04', 2),
@@ -176,7 +155,7 @@ INSERT INTO boleta (metodo_pago, estado_pago, monto_pago, impuestos, num_transac
 ('Transferencia', 'Aprobado', 200, 'IVA', '15151', '2025-06-25', 14),
 ('Efectivo', 'Aprobado', 25, 'IVA', '16161', '2025-06-26', 15);
 
--- 11.VALORACIONES
+-- 10.VALORACIONES
 INSERT INTO valoracion (id_usuario, fecha_v, comentario, puntuacion, id_producto) VALUES
 ('cliente1@invenpo.com', '2025-01-05', 'Impresionante carta vintage.', 5, 1),
 ('cliente2@invenpo.com', '2025-01-07', 'Muy divertido para jugar en familia.', 4, 2),
@@ -189,7 +168,7 @@ INSERT INTO valoracion (id_usuario, fecha_v, comentario, puntuacion, id_producto
 ('jefe4@invenpo.com', '2025-06-22', 'Vende muy bien en nuestra tienda.', 4, 20),
 ('admin@invenpo.com', '2025-06-25', 'Producto estrella de nuestro catálogo.', 5, 25);
 
--- 12.RANKINGS
+-- 11.RANKINGS
 INSERT INTO ranking (posicion_rank, posicion_mundial, id_producto) VALUES
 (1, 15, 5),
 (2, 30, 2),
@@ -204,7 +183,7 @@ INSERT INTO ranking (posicion_rank, posicion_mundial, id_producto) VALUES
 (11, 85, 19),
 (12, 90, 20);
 
--- 13.USUARIO X PRODUCTO
+-- 12.USUARIO X PRODUCTO
 INSERT INTO usuario_x_producto (correo, id_producto) VALUES
 ('cliente1@invenpo.com', 1),
 ('cliente2@invenpo.com', 2),
@@ -237,7 +216,7 @@ INSERT INTO usuario_x_producto (correo, id_producto) VALUES
 ('jefe4@invenpo.com', 4),
 ('admin@invenpo.com', 14);
 
--- 14.LISTA DESEOS X PRODUCTO
+-- 13.LISTA DESEOS X PRODUCTO
 INSERT INTO lista_deseos_x_producto (id_lista, id_producto) VALUES
 -- Lista 1
 (1, 1), (1, 6), (1, 2), (1, 26), (1, 27),
@@ -260,7 +239,7 @@ INSERT INTO lista_deseos_x_producto (id_lista, id_producto) VALUES
 -- Lista 10
 (10, 23), (10, 24), (10, 25), (10, 20);
 
--- 15.PRODUCTO X CARRO DE COMPRAS
+-- 14.PRODUCTO X CARRO DE COMPRAS
 INSERT INTO producto_x_carro_de_compras (id_producto, id_carro) VALUES
 (1, 1),
 (2, 2),
@@ -285,7 +264,7 @@ INSERT INTO producto_x_carro_de_compras (id_producto, id_carro) VALUES
 (29, 14),
 (30, 15);
 
---16. LISTA DESEOS X CARRO DE COMPRAS
+--15. LISTA DESEOS X CARRO DE COMPRAS
 INSERT INTO lista_deseos_x_carro_de_compras (id_lista, id_carro) VALUES
 (1, 1),
 (2, 2),
@@ -303,7 +282,7 @@ INSERT INTO lista_deseos_x_carro_de_compras (id_lista, id_carro) VALUES
 (7, 2),
 (8, 3);
 
--- 17.LISTA DESEOS X RANKING CARTA
+-- 16.LISTA DESEOS X RANKING CARTA
 INSERT INTO lista_deseos_x_ranking_carta (id_lista, id_carta) VALUES
 (1, 1),
 (2, 2),
@@ -318,7 +297,7 @@ INSERT INTO lista_deseos_x_ranking_carta (id_lista, id_carta) VALUES
 (4, 14),
 (5, 15);
 
--- 18. RANKINGS CARTA
+-- 17. RANKINGS CARTA
 INSERT INTO ranking_carta (id_lista, id_carta, posicion_rank) VALUES
 (1, 1, 1),
 (2, 2, 2),
