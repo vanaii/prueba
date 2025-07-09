@@ -52,4 +52,4 @@ FROM lista_deseos ld
 JOIN lista_deseos_x_producto ldp ON ld.id_lista = ldp.id_lista
 JOIN producto p ON ldp.id_producto = p.id_producto
 WHERE ld.id_lista = 1; --range(1,10)
-----Como hay varias loistas de deseos puede variar el numero dependiendo de la lista que quiera consultar
+----Como hay varias listas de deseos puede variar el numero dependiendo de la lista que quiera consultar
